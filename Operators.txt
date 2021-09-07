@@ -1,0 +1,28 @@
+create table Employes
+(
+ID int primary key,
+Name varchar(32),
+Age int,
+Salary int
+)
+
+insert into Employes values(1,'Pooja',24,25000)
+insert into Employes values(2,'Sonia',30,30000)
+insert into Employes values(3,'Rahul',35,50000)
+
+
+------------perform the addition operation on the column salary.------------
+SELECT Salary+10000 as new_salary FROM Employes;
+
+------------perform the subtraction operation on the column salary.------------
+
+SELECT Salary-5500 as Subtracted_Sal FROM Employes;
+
+------------perform the multiplication operation on the column salary.------------
+
+SELECT Salary*15 as Multiplied_Salary FROM Employes;
+
+
+------------perform the division operation on the column salary.------------
+
+SELECT Salary/50 as Sal_Div FROM Employes;

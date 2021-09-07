@@ -1,0 +1,64 @@
+create table emp2
+(
+eno int,
+ename varchar(32),
+eadd varchar(32),
+sal int,
+doj datetime
+)
+
+insert into emp2 values(1,'Priya','Pune',30000,'02-03-2012')
+insert into emp2 values(2,'Sneha','Mumbai',35000,getdate())
+drop table emp2
+
+
+---------------delete trigger-----------
+create trigger trigdell
+on emp2
+for delete 
+as 
+print 'deletion of department is not allowed.'
+rollback transaction
+return
+
+delete from emp2 where eno=1;
+
+select * from emp2
+
+
+-------------insert trigger------------
+create trigger triginsert
+on emp2
+for insert
+as
+declare @modifieddate datetime
+select @modifieddate =doj from inserted
+if(@modifieddate!=getdate())
+begin
+print'the modified date should be current date.hence cannot be inserted'
+rollback transaction
+return
+end
+
+
+--------------update trigger----------------
+create trigger trigupdate3
+on emp2
+for update as
+if update(sal)
+begin 
+declare @esal int
+select @esal=sal
+from emp2
+if(@esal>50000)
+begin
+print'the salary cannot be more than 50000'
+rollback transaction
+end
+end
+
+update emp2 
+set sal=60000 
+where ename='Sneha'
+
+

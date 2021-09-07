@@ -1,0 +1,51 @@
+create table Student
+(
+Admission_no int primary key,
+FirstName varchar(32) not null,
+LastName varchar(32),
+Age int
+)
+
+insert into Student values(1001,'Vikas','Sharma',14);
+insert into Student values(1011,'Piyush','Shah',16);
+insert into Student values(1024,'Rahul','Vaidya',15);
+insert into Student values(1036,'Arjun','Shetty',13);
+
+select * from Student
+
+create table Fee
+(
+Admission_no int primary key,
+Course varchar(32) not null,
+Amount  decimal
+)
+
+insert into Fee values(1011,'Electrical',14);
+insert into Fee values(1001,'ICT',16);
+insert into Fee values(1036,'Commerse',15);
+
+select * from Fee
+
+-------------inner join----------
+SELECT Student.Admission_no, Student.FirstName, Student.LastName, Fee.Amount
+FROM Student
+INNER JOIN Fee
+ON Student.Admission_no = Fee.Admission_no
+
+----------Left outer join---------
+SELECT Student.Admission_no, Student.FirstName, Student.lastName, Fee.Amount
+FROM Student
+LEFT OUTER JOIN Fee
+ON Student.Admission_no = Fee.Admission_no
+
+----------Right outer join---------
+SELECT Student.Admission_no, Student.firstName, Student.lastName, Fee.Amount
+FROM Student
+RIGHT OUTER JOIN Fee
+ON Student.Admission_no = Fee.Admission_no
+
+----------Full outer join---------
+SELECT Student.Admission_no, Student.FirstName, Student.LastName, Fee.Amount
+FROM Student
+FULL OUTER JOIN Fee
+ON Student.Admission_no = Fee.Admission_no

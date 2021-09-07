@@ -1,0 +1,23 @@
+VIEWS
+
+-------create views---------
+create view ViewusersDetails
+as
+select userid,cityName,userName,useraddress,credit_card,email,Startdate,salary from users
+
+-----------Inserting values into views-----------------
+insert into ViewusersDetails values(106,'Delhi','Sneha','MAHARASHTRA','Active','sneha@286','2008-04-03',30000);
+select * from users
+
+------------Updating values into views---------------------
+update ViewusersDetails set userName='Priya' where userName='Sneha'
+select * from users where userName='Priya'
+
+select * from users
+
+-------------deleting values into views----------------
+delete from  ViewusersDetails where userName='Priya'
+select * from users
+
+-----------drop values from ViewusersDetails--------------
+drop view ViewusersDetails

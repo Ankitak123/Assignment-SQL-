@@ -1,0 +1,23 @@
+create table emp
+(
+empID int primary key,
+ename varchar(32),
+deptcode int,
+mgnID int,
+salary int,
+startdate datetime
+)
+select * from emp
+
+insert into emp values(101,'Shree',502,2003,20000,'2012-05-03');
+insert into emp values(103,'Vastav',504,2005,30000,'2012-07-06');
+
+--------------MIN-----------
+Select MIN(salary) AS SmallestAmount FROM emp;
+
+--------------Date-----------
+Select empID, ename,startdate as 'years' from emp;
+
+--------------UpperCase------
+Select UPPER(ename) AS Uppercaseename
+FROM emp;
