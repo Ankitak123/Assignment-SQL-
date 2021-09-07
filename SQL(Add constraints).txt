@@ -1,0 +1,44 @@
+use emp
+CREATE TABLE users 
+(
+    userid int NOT NULL,
+    cityName VARCHAR(32),
+    userName VARCHAR (32),
+    useraddress VARCHAR(32) ,
+    credit_card VARCHAR(32)
+)
+
+alter table users add constraint pk_users primary key(userid);
+alter table users add unique(userName);
+alter table users alter column cityName varchar(32) NOT NULL;
+alter table users add constraint useraddress default 'MAHARASHTRA' for useraddress;
+alter table users add check (credit_card='Active');
+alter table users add email varchar(32);
+alter table users add Startdate date;
+alter table users add salary decimal;
+
+
+INSERT INTO users (userid,cityName,userName,credit_card,email)VALUES (101,'Pune','Kiran','Active','kiran@123');
+INSERT INTO users (userid,cityName,userName,credit_card,email)VALUES (102,'Mumbai','Pooja','Active','pooja@456');
+INSERT INTO users (userid,cityName,userName,credit_card,email)VALUES (103,'Nagpur','Seema','Active','seema@789');
+INSERT INTO users (userid,cityName,userName,credit_card,email)VALUES (104,'Delhi','Manisha','Active','manisha@345');
+INSERT INTO users (userid,cityName,userName,credit_card,email)VALUES (105,'Kolhapur','Rakhi','Active','rakhi@567');
+INSERT INTO users (userid,cityName,userName,credit_card,email)VALUES (105,'Kolhapur','Rakhi','Active','rakhi@567');
+
+select * from users;
+
+create table bank(
+ bankID int primary key,
+ bankName varchar(32) unique,
+ bankAddress varchar(32),
+  userid int FOREIGN KEY REFERENCES users(userid)
+ )
+ drop table bank;
+
+ INSERT INTO bank (bankID,bankName,bankAddress,userid)VALUES (45001,'ICICI','PUNE',104);
+ INSERT INTO bank (bankID,bankName,bankAddress,userid)VALUES (45002,'IDBI','Nagpur',102);
+
+ select * from bank
+
+ ALTER TABLE bank
+ ADD FOREIGN KEY (userid) REFERENCES users(userid);
